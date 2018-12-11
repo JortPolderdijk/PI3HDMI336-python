@@ -11,5 +11,8 @@ setup(name		 = 'PI3HDMI336',
       description	 = 'This is a library to control the PI3HDMI336 over I2C.',
       licence		 = 'MIT',
       url 		 = 'https://github.com/JortPolderdijk/PI3HDMI336-python',
-      install_requires	 = ['Adafruit-GPIO'],
-      packages 		 = find_packages());
+      install_requires	 = ['Adafruit_GPIO==1.0.3.dev20191209'],
+      dependency_links = [
+            'git+https://github.com/JortPolderdijk/Adafruit_Python_GPIO.git#egg=Adafruit_GPIO-1.0.3.dev20191209'
+      ],
+      packages 		 = find_packages())
