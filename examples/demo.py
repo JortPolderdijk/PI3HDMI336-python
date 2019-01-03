@@ -1,5 +1,8 @@
 from PI3HDMI336 import PI3HDMI336
-import time
+
+"""
+    This script covers all features of the PI3HDMI336 Python Library.
+"""
 
 device = PI3HDMI336()
 
