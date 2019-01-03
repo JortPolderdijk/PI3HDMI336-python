@@ -154,6 +154,7 @@ class PI3HDMI336(object):
         """
         Set the HDMI input port
         :param port: A, B, C or None
+        :return:
         """
         assert -1 <= port <= 2
         if port == -1:
@@ -163,6 +164,11 @@ class PI3HDMI336(object):
         self._device.writeRaw(read)
 
     def set_tmds_output(self, value):
+        """
+        Set the TMDS output
+        :param value: boolean 0 or 1
+        :return:
+        """
         assert type(value) is bool
         read = bytearray(self._device.readRaw(PI3HDMI336_TOTAL_BYTES))
         read[PI3HDMI336_OFFSET_BYTE0] = \
@@ -170,6 +176,11 @@ class PI3HDMI336(object):
         self._device.writeRaw(read)
 
     def set_input_selection(self, value):
+        """
+        Set the HPD input selection.
+        :param value: 0 = HPD_SINK 1 = I2C Register Setting from set_port_logic_setting
+        :return:
+        """
         assert type(value) is bool
         read = bytearray(self._device.readRaw(PI3HDMI336_TOTAL_BYTES))
         read[PI3HDMI336_OFFSET_BYTE0] = \
@@ -177,6 +188,11 @@ class PI3HDMI336(object):
         self._device.writeRaw(read)
 
     def set_output_selection(self, value):
+        """
+        Set HPD Output Stage selection
+        :param value: 0 = Open Drain 1 = Output Buffer
+        :return:
+        """
         assert type(value) is bool
         read = bytearray(self._device.readRaw(PI3HDMI336_TOTAL_BYTES))
         read[PI3HDMI336_OFFSET_BYTE0] = \
@@ -184,6 +200,12 @@ class PI3HDMI336(object):
         self._device.writeRaw(read)
 
     def set_port_logic_setting(self, port, value):
+        """
+        Set the HPD logic of a port. See the documentation for further details
+        :param port: PortA, PortB or PortC
+        :param value: boolean 0 or 1
+        :return:
+        """
         assert type(value) is bool
         assert 0 <= port <= 2
         read = bytearray(self._device.readRaw(PI3HDMI336_TOTAL_BYTES))
@@ -192,6 +214,12 @@ class PI3HDMI336(object):
         self._device.writeRaw(read)
 
     def set_port_resistor(self, port, value):
+        """
+        Set the resistor value of each individual port
+        :param port: PortA, PortB or PortC
+        :param value: 0 = Rpd connected, 1 = Rt connected
+        :return:
+        """
         assert type(value) is bool
         assert 0 <= port <= 2
         port = 7 - port
@@ -201,6 +229,11 @@ class PI3HDMI336(object):
         self._device.writeRaw(read)
 
     def set_dcc_selection(self, value):
+        """
+        Set the DCC channel
+        :param value: 0 = passive 1 = active
+        :return:
+        """
         assert type(value) is bool
         read = bytearray(self._device.readRaw(PI3HDMI336_TOTAL_BYTES))
         read[PI3HDMI336_OFFSET_BYTE1] = \
